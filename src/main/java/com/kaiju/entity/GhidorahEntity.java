@@ -25,7 +25,6 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
@@ -144,7 +143,7 @@ public class GhidorahEntity extends HostileEntity implements GeoEntity {
             } else {
                 lavaTicks = 0;
                 if (age % 600 == 1) {                    // wander toward the lava mountains on its own
-                    Pair<BlockPos, ?> r = w.locateBiome(b -> b.matchesKey(ModBiomes.LAVA_MOUNTAIN), getBlockPos(), 2500, 64, 64);
+                    var r = w.locateBiome(b -> b.matchesKey(ModBiomes.LAVA_MOUNTAIN), getBlockPos(), 2500, 64, 64);
                     seek = r == null ? null : r.getFirst();
                 }
                 if (seek != null && getTarget() == null)
